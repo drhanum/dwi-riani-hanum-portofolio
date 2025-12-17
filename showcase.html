@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Citizenship Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body{
+  font-family:Poppins,sans-serif;
+  margin:0;
+  background:#8c1436;
+  color:#fff;
+}
+section{
+  min-height:100vh;
+  padding:80px 8%;
+}
+.back{
+  display:inline-block;
+  margin-bottom:30px;
+  color:#fff;
+  font-weight:600;
+}
+.back-btn{
+  display:inline-block;
+  padding:12px 26px;
+  border-radius:999px;
+  background:#850e35;
+  color:#fcf5ee;
+  font-weight:600;
+  text-decoration:none;
+  transition:all 0.3s ease;
+  margin-bottom:30px;
+}
+
+.back-btn:hover{
+  background:#f7f5f8;
+  color:#850e35;
+  transform:translateX(-6px);
+}
+
+/* ===== SECTION COLORS ===== */
+#podcast{
+  background:#ee6983;
+}
+#research{
+  background:#fcf5ee;
+  color: #850e35;
+}
+#infographic{
+  background:#ffc4c4;
+  color: #850e35;
+}
+/* biar jarak aman */
+.section-page{
+  min-height:100vh;
+  padding:80px 8%;
+}
+.content-row{
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+}
+
+.media{
+  flex:1;
+}
+
+.media iframe{
+  width:100%;
+  max-width:520px;
+  aspect-ratio:16 / 9;
+  height:auto;
+  border-radius:14px;
+}
+.media img{
+  width:100%;
+  max-width:520px;
+  height: auto;
+  border-radius:14px;
+  object-fit: cover;
+}
+
+.text{
+  flex:1.2;
+}
+@media (max-width:768px){
+  .content-row{
+    flex-direction:column;
+  }
+
+  .media iframe,
+  .media img{
+    height:auto;
+  }
+}
+.download-btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 28px;
+  border-radius:999px;
+  background:#8b0d2f;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .3s ease;
+}
+
+.download-btn:hover{
+  background:#f7b6c6;
+  color:#8b0d2f;
+  transform:translateY(-3px);
+}
+
+</style>
+</head>
+<body>
+
+<section id="podcast">
+  <a href="main.html" class="back-btn">← Back to Home</a>
+
+  <div class="content-row">
+    
+    <!-- KIRI: VIDEO -->
+    <div class="media iframe">
+      <iframe
+        src="https://www.youtube.com/embed/CoxGaLMGmGI?si=fMlaCsec-QJmL3y9"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- KANAN: TEKS -->
+    <div class="text">
+      <h1>PODCAST #KaburAjaDulu</h1>
+      <p>
+        <strong>Judul Karya:</strong><br>
+        Podcast: Analisis Sikap Warga Negara dalam Menghadapi Konflik Sosial berdasarkan #KaburAjaDulu
+      </p>
+      <p>
+        <strong>Bentuk Karya:</strong><br>
+        Video YouTube (format video podcast)
+      </p>
+      <p>
+        <strong>Tujuan Karya:</strong><br>
+        Untuk memahami bagaimana tren #KaburAjaDulu mencerminkan sikap dan 
+        respons masyarakat terhadap kondisi sosial di Indonesia.
+      </p>
+      <p>
+        <strong>Deskripsi Karya:</strong><br>
+        Karya ini berupa video podcast yang membahas fenomena viral #KaburAjaDulu 
+        sebagai respons masyarakat terhadap berbagai tekanan sosial, ekonomi, dan politik. 
+        Melalui percakapan ringan namun analitis, podcast ini mengulas bagaimana media sosial 
+        menjadi ruang bagi warga—khususnya generasi muda—untuk mengekspresikan keresahan, harapan, dan kritik terhadap kondisi bangsa.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <a href="main.html" class="back-btn">← Back to Home</a>
+
+  <div class="content-row">
+    <div class="media img">
+      <img src="assets/research.png">
+    </div>
+
+    <div class="text">
+      <h1>MINI RISET #KaburAjaDulu</h1>
+      <p>
+        <strong>Judul Karya:</strong><br>
+        Analisis Tren #KaburAjaDulu Terhadap Sikap Warga Negara Dalam Menghadapi Konflik Sosial
+      </p>
+      <p>
+        <strong>Bentuk Karya:</strong><br>
+        Artikel ilmiah/jurnal akademik bidang Pendidikan Kewarganegaraan
+      </p>
+      <p>
+        <strong>Tujuan Karya:</strong><br>
+        Menjelaskan bagaimana tren #KaburAjaDulu mencerminkan sikap 
+        dan respon warga terhadap kondisi sosial di Indonesia.
+      </p>
+      <p>
+        <strong>Deskripsi Karya:</strong><br>
+        Karya ini menggambarkan analisis fenomena #KaburAjaDulu sebagai bentuk kritik sosial 
+        masyarakat yang diekspresikan melalui media sosial, 
+        dengan melihat bagaimana tren tersebut mencerminkan emosi, 
+        pandangan, dan perilaku warga terhadap kondisi bangsa.
+      </p>
+    </div>
+  </div>
+  <div></div>
+  <!-- BUTTON DOWNLOAD -->
+    <a href="https://drive.google.com/file/d/1H5YKxQydIq2LOkcaNzIlBDlxBmx_8CrL/view" class="download-btn" target="_blank">
+      ⬇ Download Full Article
+    </a>
+  </div>
+</section>
+
+<section id="infographic">
+  <a href="main.html" class="back-btn">← Back to Home</a>
+
+  <div class="content-row">
+    <div class="media img">
+      <img src="assets/infographic.jpeg">
+    </div>
+
+    <div class="text">
+      <h1>INFOGRAFIS #KaburAjaDulu</h1>
+      <p>
+        <strong>Judul Karya:</strong><br>
+        Analisis Sikap Warga terhadap Tren #KaburAjaDulu dalam Menghadapi Konflik Sosial
+      </p>
+      <p>
+        <strong>Bentuk Karya:</strong><br>
+        Poster/infografis analisis sosial berbasis riset kualitatif.
+      </p>
+      <p>
+        <strong>Tujuan Karya:</strong><br>
+        Menjelaskan fenomena digital #KaburAjaDulu sebagai bentuk kritik sosial warga, 
+        serta memaparkan hasil analisis sikap masyarakat terhadap tren tersebut.
+      </p>
+      <p>
+        <strong>Deskripsi Karya:</strong><br>
+        Karya ini adalah infografis yang menganalisis tren digital #KaburAjaDulu sebagai bentuk kritik sosial warga Indonesia. 
+        Melalui data survei, teori sosial, dan analisis media, 
+        karya ini menunjukkan bagaimana humor dan simbolisme digital menjadi cara baru masyarakat mengekspresikan 
+        frustrasi, aspirasi, dan partisipasi politik di ruang online.
+      </p>
+    </div>
+  </div>
+</section>
