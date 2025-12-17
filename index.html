@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dwi Riani Hanum – Portfolio PKn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:#fff;color:#3a0b1f}
+    a{text-decoration:none;color:inherit}
+
+    /* ===== HERO ===== */
+    .hero{background:#850e35;color:#fff;padding:80px 8%;display:flex;align-items:center;justify-content:space-between;gap:40px}
+    .hero-text{max-width:520px}
+    .hero small{letter-spacing:2px;opacity:.8}
+    .hero h1{font-size:48px;line-height:1.2;margin:20px 0}
+    .hero p{opacity:.9;margin-bottom:28px}
+    .btn{display:inline-block;background:#f7b7c6;color:#8c1436;padding:12px 28px;border-radius:999px;font-weight:600}
+    .hero-img{padding:60px}
+    .hero-img img{width:360px;display:block}
+
+    /* ===== MODUL ===== */
+    .section{padding:80px 8%}
+    .section-title{font-size:36px;color:#fff;margin-bottom:40px}
+    .modul{background:#f26b86}
+    .modul-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+    .card{background:#fff;border-radius:18px;padding:14px;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+    .card img{width:100%;border-radius:12px}
+    .card h4{font-size:14px;margin-top:10px}
+    .card p{font-size:12px;color:#777}
+
+    /* ===== SHOWCASE ===== */
+    .showcase{background:#ffd0d9;display:flex;flex-direction:column;gap:60px;}
+    .showcase h2{font-size:42px;line-height:1.2}
+    .showcase ul{list-style:none;margin-top:20px}
+    .showcase li{margin-bottom:14px;font-weight:500}
+
+    /* ===== REFLEKSI ===== */
+    .refleksi h2{font-size:36px;margin-bottom:40px}
+    .ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+    .ref-card{background:#ffd0d9;border-radius:20px;padding:24px}
+    .ref-card h4{margin-bottom:12px}
+    .ref-card p{font-size:14px}
+
+    /* ===== FOOTER ===== */
+    footer{background:#8c1436;color:#fff;padding:80px 8%}
+    footer h2{font-size:36px;margin-bottom:30px}
+    .contact{display:flex;gap:20px;flex-wrap:wrap}
+    .contact span{background:#fff;color:#8c1436;padding:10px 20px;border-radius:999px;font-size:14px}
+    .closing{background:#ffc4c4;color:#8c1436;padding:60px 8%;display:flex;align-items:center;gap:40px}
+    .closing img{width:200px;border-radius:24px}
+
+    @media(max-width:900px){
+      .hero,.closing{flex-direction:column;text-align:center}
+      /* keep showcase layout like Canva */
+      .showcase{grid-template-columns:1fr 1.4fr}
+    }
+    /* ===== MODAL PERTEMUAN ===== */
+    .modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    }
+    .modal-box{
+    background:#fff5f0;
+    width:90%;
+    max-width:900px;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:32px;
+    padding:40px;
+    position:relative;
+    }
+    .modal-close{
+    position:absolute;
+    top:20px;
+    right:24px;
+    font-size:28px;
+    cursor:pointer;
+    }
+    .modal-badge{
+    background:#8c1436;
+    color:#fff;
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:12px;
+    display:inline-block;
+    margin-bottom:16px;
+    }
+    .modal-box .subjudul{
+    display:block;
+    margin-top:28px;        /* jarak dari paragraf atas */
+    margin-bottom:12px;
+    padding-top:12px;       /* jarak teks dari garis */
+    font-size:18px;
+    font-weight:700;
+    border-top:2px solid #8c1436; /* GARIS ATAS */
+    }
+
+    .project-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    }
+      .contact{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+
+  /* tiap item */
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#fff;
+    color:#8c1436;
+    padding:10px 18px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+    transition:all 0.3s ease;
+  }
+
+  /* lingkaran ikon */
+  .icon-circle{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#f7b7c6;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all 0.3s ease;
+  }
+
+  .icon-circle img{
+    width:18px;
+    height:18px;
+  }
+
+  /* HOVER EFFECT */
+  .contact-item:hover{
+    background:#f7b7c6;
+    color:#8c1436;
+  }
+
+  .contact-item:hover .icon-circle{
+    background:#8c1436;
+  }
+
+  .contact-item:hover .icon-circle img{
+    filter:brightness(0) invert(1);
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <small>PORTOFOLIO | PENDIDIKAN KEWARGANEGARAAN</small>
+      <h1>Dwi Riani Hanum<br/>Portofolio</h1>
+      <p>Halo! Saya Dwi Riani Hanum, mahasiswi Matana University semester ganjil tahun ajaran 2025/2026.</p>
+      <a href="knowmore.html" class="btn">Know More</a>
+    </div>
+    <div class="hero-img">
+      <img src="assets/dwi.png" alt="Dwi Riani Hanum">
+    </div>
+  </section>
+
+  <!-- MODUL -->
+  <section id="modul" class="section modul">
+    <h2 class="section-title">Modul Mingguan</h2>
+    <div class="modul-grid">
+        <div class="card" onclick="openModal(1)"><img src="assets/modul1.jpeg"><h4>Pertemuan 1</h4><p>Pendahuluan</p></div>
+        <div class="card" onclick="openModal(2)"><img src="assets/modul2.jpeg"><h4>Pertemuan 2</h4><p>Sejarah Identitas Nasional</p></div>
+        <div class="card" onclick="openModal(3)"><img src="assets/modul3.jpeg"><h4>Pertemuan 3</h4><p>Rakyat, Hukum, Negara</p></div>
+        <div class="card" onclick="openModal(4)"><img src="assets/modul4.jpeg"><h4>Pertemuan 4</h4><p>Ideologi & Falsafah Bangsa</p></div>
+        <div class="card" onclick="openModal(5)"><img src="assets/modul5.jpeg"><h4>Pertemuan 5</h4><p>Konstitusi</p></div>
+        <div class="card" onclick="openModal(6)"><img src="assets/modul6.jpeg"><h4>Pertemuan 6</h4><p>Fungsi dan Peran Negara</p></div>
+        <div class="card" onclick="openModal(9)"><img src="assets/modul7.jpeg"><h4>Pertemuan 9</h4><p>Demokrasi</p></div>
+        <div class="card" onclick="openModal(11)"><img src="assets/modul8.jpeg"><h4>Pertemuan 11</h4><p>Multikulturalisme</p></div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section class="section showcase" style="background:#fff2f4;padding:80px 0">
+  <div style="max-width:1200px;margin:auto;padding:0 40px">
+
+    <!-- TITLE -->
+    <div style="margin-bottom:60px">
+      <h2 style="font-size:42px;line-height:1.2;margin-bottom:14px">
+        Showcase of<br/>Citizenship Projects
+      </h2>
+      <div style="width:70px;height:4px;background:#f26b86;border-radius:4px"></div>
+    </div>
+
+    <!-- CARDS ROW -->
+    <div style="display:flex;gap:28px;flex-wrap:wrap">
+
+      <!-- CARD -->
+      <!-- CARD PODCAST (LINK KE HALAMAN BARU) -->
+      <a href="showcase.html#podcast" style="flex:1;min-width:300px;">
+
+        <div style="
+          background:#fff;
+          border-radius:28px;
+          padding:28px 32px;
+          display:flex;
+          gap:24px;
+          align-items:flex-start;
+          box-shadow:0 14px 34px rgba(0,0,0,.08);
+          transition:.3s;
+        ">
+
+          <div style="
+            min-width:72px;
+            height:72px;
+            border-radius:20px;
+            background:#f26b86;
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px">
+            🎙️
+          </div>
+
+          <div>
+            <h4 style="font-size:20px;margin-bottom:8px">
+              Podcast #KaburAjaDulu
+            </h4>
+            <p style="font-size:14px;color:#555;line-height:1.7">
+              An exploration of the social trend among Gen Z expressing their thoughts on current affairs.
+            </p>
+          </div>
+
+        </div>
+      </a>
+
+
+      <!-- CARD 2 -->
+      <a href="showcase.html#research" style="flex:1;min-width:300px;">
+
+        <div style="
+          background:#fff;
+          border-radius:28px;
+          padding:28px 32px;
+          display:flex;
+          gap:24px;
+          box-shadow:0 14px 34px rgba(0,0,0,.08);
+          transition:.3s;
+          ">
+
+          <div style="
+            min-width:72px;
+            height:72px;
+            border-radius:20px;
+            background:#f26b86;
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px">
+            📄
+          </div>
+
+          <div>
+            <h4 style="font-size:20px;margin-bottom:8px">
+              Mini Research Article
+            </h4>
+            <p style="font-size:14px;color:#555;line-height:1.7">
+              A brief academic-style analysis examining youth frustration in the digital age.
+            </p>
+          </div>
+        </div>
+      </a>
+
+
+      <!-- CARD 3 -->
+      <a href="showcase.html#infographic" style="flex:1;min-width:300px;">
+
+        <div style="
+          background:#fff;
+          border-radius:28px;
+          padding:28px 32px;
+          display:flex;
+          gap:24px;
+          box-shadow:0 14px 34px rgba(0,0,0,.08);
+          transition:.3s;
+          ">
+
+          <div style="
+            min-width:72px;
+            height:72px;
+            border-radius:20px;
+            background:#f26b86;
+            color:#fff;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:30px">
+            📊
+          </div>
+
+          <div>
+            <h4 style="font-size:20px;margin-bottom:8px">
+              Infographic Article
+            </h4>
+            <p style="font-size:14px;color:#555;line-height:1.7">
+              Visual explanation of Gen Z social critique with engaging data visualization.
+            </p>
+          </div>
+        </div>
+      </a>
+
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- REFLEKSI -->
+  <section class="section refleksi">
+    <h2>Refleksi Akhir</h2>
+    <div class="ref-grid">
+      <div class="ref-card"><h4>Apa yang saya pelajari tentang demokrasi dan multikulturalisme?</h4>
+        <p>hidup berdemokrasi dan bermasyarakat majemuk membutuhkan sikap menghargai perbedaan, berpikir adil, dan menjaga persatuan.</p>
+      </div>
+      <div class="ref-card"><h4>Bagaimana peran saya sebagai warga negara di era digital?</h4>
+        <p>media sosial adalah ruang baru untuk menyampaikan kritik dan aspirasi, sehingga saya harus bijak, bertanggung jawab, dan tetap kritis.</p>
+      </div>
+      <div class="ref-card"><h4>Apa tanggung jawab pribadi saya setelah mempelajari semua materi ini?</h4>
+        <p>peka terhadap isu sosial, bersuara dengan etika, dan berkontribusi menciptakan perubahan positif bagi bangsa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <h2>Terima kasih atas perhatian dan apresiasinya</h2>
+    <div class="contact">
+    
+      <a href="https://instagram.com/dwrahanumm" target="_blank" class="contact-item">
+        <span class="icon-circle">
+          <img src="assets/instagram.png" alt="Instagram">
+        </span>
+        <span>@dwrahanumm</span>
+      </a>
+
+      <!-- Email -->
+      <a href="https://mail.google.com/mail/u/0/?fs=1&to=dwi.hanum@student.matanauniversity.ac.id&tf=cm" target="_blank" class="contact-item">
+        <span class="icon-circle">
+          <img src="assets/mail.png" alt="Email">
+        </span>
+        <span>dwi.hanum@student.matanauniversity.ac.id</span>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/drhanum" target="_blank" class="contact-item">
+        <span class="icon-circle">
+          <img src="assets/github.png" alt="GitHub">
+        </span>
+        <span>drhanum</span>
+      </a>
+</div>
+
+  </footer>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <img src="assets/dwi2.png" alt="Dwi">
+    <div>
+      <h2>A journey of growth — thank you for reviewing my work.</h2>
+      <p>Portofolio ini dibuat sebagai salah satu bentuk laporan kegiatan selama satu semester.</p>
+    </div>
+  </section>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <span class="modal-close" onclick="closeModal()">×</span>
+    <span class="modal-badge" id="badge"></span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalContent"></p>
+  </div>
+</div>
+<script>
+const materi = {
+  1: ["Pendahuluan", 
+
+  `
+  <p>
+    Pertemuan ini membahas konsep dasar Pendidikan Kewarganegaraan, 
+    peran mahasiswa dan dosen, serta pentingnya berpikir kritis sebagai warga negara.
+  </p>
+
+  <strong class="subjudul">Rangkuman Materi</strong>
+  <ul>
+    <li><strong>Pendidikan:</strong> Upaya sadar masyarakat & negara untuk menjadikan warga lebih berpengetahuan, terampil, danberadab</li>
+    <li><strong>Kewarganegaraan:</strong> Hal-hal yang berkaitan dengan bangsa, negara, dan hubungan negara dengan warganya.</li>
+    <li><strong>Pendidikan Kewarganegaraan:</strong> Usaha negara memberikan pemahaman tentang konsep negara, hubungan warga dengan negara, serta peran warga negara.</li>
+  </ul>
+  <br>
+  <p><strong>Problem Solving</strong></p>
+  <ul>
+    <li>Merumuskan masalah.</li>
+    <li>Menganalisis masalah dari berbagai sudut pandang.</li>
+    <li>Membuat hipotesis.</li>
+    <li>Mengumpulkan data pendukung.</li>
+    <li>Menentukan solusi terbaik dan strategi penyelesaian.</li>
+    <li>Mengevaluasi hasil penyelesaian.</li>
+  </ul>
+  <strong class="subjudul">Refleksi</strong>
+  <p>
+    Pertemuan ini membahas dasar-dasar Pendidikan
+    Kewarganegaraan, mulai dari pengertian
+    pendidikan, kewarganegaraan, hingga peran
+    mahasiswa dan dosen dalam proses belajar.
+    Materi ini menekankan pentingnya keaktifan,
+    berpikir kritis, dan kemampuan memecahkan
+    masalah sebagai bagian dari pembentukan
+    karakter warga negara.
+  </p>
+  `
+],
+  2: ["Identitas Nasional",
+  `
+  <p>
+    Identitas nasional Indonesia terbentuk dari pengalaman dijajah dan tekad bersama untuk bersatu dalam keberagaman.
+  </p>
+
+  <strong class="subjudul">Rangkuman Materi</strong>
+  <p>
+    Identitas nasional Indonesia terbentuk melalui proses sejarah panjang yang ditandai oleh pengalaman bersama dijajah, perjuangan pergerakan nasional, dan tekad kolektif untuk hidup sebagai satu bangsa. 
+    Bibit nasionalisme modern muncul sejak awal abad ke-20 melalui organisasi-organisasi pribumi seperti Sarekat Priyayi dan Boedi Oetomo, yang dipicu oleh gagasan Dr. Wahidin dan perjuangan para tokoh seperti Tirto Adhi Soerjo. 
+    Puncak kesadaran kebangsaan tercermin dalam Sumpah Pemuda 1928 yang menegaskan satu bangsa, satu bahasa, dan satu tanah air Indonesia.
+    Konsep bangsa Indonesia diperkuat oleh pandangan Bung Karno yang menekankan persamaan nasib, cita-cita bersama, dan kesatuan wilayah. 
+    Pembentukan negara Indonesia kemudian dipertegas dalam Pembukaan UUD 1945 yang menegaskan hak untuk merdeka, tujuan bernegara, dasar negara (Pancasila), dan orientasi spiritual bangsa. 
+    Berbagai faktor pembentuk identitas seperti primordial, agama/ideologi, ketokohan, sejarah, serta kesediaan bersatu dalam Bhinneka Tunggal Ika memperkokoh identitas nasional. 
+    Teori Renan dan Anderson menekankan bahwa bangsa terbentuk dari kehendak hidup bersama dan komunitas yang dibayangkan.
+  </p>
+
+  <strong class="subjudul">Refleksi</strong>
+  <p>
+    Setelah mempelajari materi ini, saya memahami
+    bahwa identitas nasional Indonesia terbentuk dari
+    perjuangan panjang dan kesadaran untuk bersatu
+    dalam keberagaman. Hal ini membuat saya lebih
+    menghargai pentingnya menjaga persatuan dan
+    meneruskan semangat kebersamaan yang
+    diwariskan para pendiri bangsa.
+  </p>
+  `],
+  3: ["Rakyat, Hukum, dan Negara",
+    `
+    <p>
+      negara dan hukum terbentuk dari kesepakatan rakyat, sehingga kekuasaan hanya sah
+      jika dijalankan untuk melindungi dan melayani masyarakat.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Materi ini membahas hubungan antara rakyat, hukum, dan negara melalui konsep segitiga kekuasaan dan teori kontrak sosial. 
+      Dalam teori ini, negara terbentuk karena rakyat secara sukarela menyerahkan sebagian hak alami mereka agar tercipta keamanan, ketertiban, dan kepastian hukum. 
+      Hobbes, Locke, dan Rousseau memberikan pandangan berbeda tentang kondisi manusia sebelum ada negara, namun semuanya sepakat bahwa hukum dan kekuasaan lahir dari persetujuan rakyat. 
+      Negara kemudian memiliki kewajiban melayani dan melindungi rakyat, sementara rakyat wajib mematuhi hukum yang mereka setujui. 
+      Jika negara gagal menjalankan amanah atau bertindak sewenang-wenang, rakyat memiliki hak untuk menolak atau mengganti kekuasaan. 
+      Materi juga menjelaskan unsur-unsur konstitutif sebuah negara, bentuk-bentuk negara berdasarkan ideologi, kekuasaan dan pembagian wewenang, serta sumber-sumber legitimasi seperti legitimasi religius, elitis, dan demokratis.
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Setelah mempelajari materi ini, saya menyadari
+      bahwa negara hanya bisa berfungsi dengan baik
+      jika tetap setia pada kontrak sosial dan benar-
+      benar melayani rakyat, karena dari rakyatlah
+      kekuasaan itu berasal. Hal ini membuat saya lebih
+      menghargai peran warga negara dan pentingnya
+      menjaga agar hukum berjalan adil bagi semua.
+    </p>
+  `],
+  4: ["Ideologi & Falsafah Bangsa",
+  `
+    <p>
+      Pancasila berfungsi sebagai pandangan hidup serta dasar negara yang lahir dari nilai-
+      nilai budaya Indonesia.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Materi ini menjelaskan bahwa ideologi adalah kumpulan gagasan, keyakinan, dan nilai yang menjadi pedoman bagi individu maupun kelompok dalam berpikir dan bertindak. 
+      Secara etimologis berasal dari kata idea dan logos, ideologi dipahami sebagai “ilmu tentang gagasan” dan berfungsi mengarahkan berbagai aspek kehidupan sosial, politik, ekonomi, budaya, hingga agama. 
+      Dari sudut pandang filsafat, ideologi merupakan sistem pikiran yang rasional dan sistematis, dan dapat bersifat terbuka atau tertutup. 
+      Berbagai ideologi besar seperti liberalisme, sosialisme, komunisme, anarkhisme, hingga sindikalisme menunjukkan cara berbeda dalam memandang manusia, kekuasaan, dan tujuan sosial. 
+      Dalam konteks politik, ideologi menjadi cetak biru dalam mengatur kekuasaan dan kebijakan publik; sementara secara sosiokultural, ideologi berfungsi sebagai perekat sosial yang membentuk identitas kolektif dan nilai bersama. 
+      Materi ini juga membahas Pancasila sebagai pandangan hidup, dasar negara, dan budaya bangsa, yang lahir dari nilai-nilai bangsa sendiri dan diperkaya oleh pemikiran dunia, sehingga menjadi ideologi terbuka, dinamis, dan relevan bagi kehidupan masyarakat Indonesia.
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Setelah mempelajari materi ini, saya menyadari
+      bahwa ideologi bukan sekadar konsep abstrak,
+      tetapi sesuatu yang benar-benar memengaruhi
+      cara kita berpikir, hidup, dan bernegara. Saya juga
+      melihat bahwa Pancasila sebagai ideologi terbuka
+      memberi ruang bagi bangsa Indonesia untuk
+      berkembang tanpa kehilangan nilai dasarnya.
+    </p>
+  `],
+  5: ["Konstitusi",
+  `
+    <p>
+      fungsi konstitusi sebagai dasar hukum tertinggi yang mengatur kekuasaan negara, hak warga negara, dan mekanisme demokrasi.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Materi ini membahas bahwa konstitusi merupakan dasar utama sebuah negara karena memuat aturan fundamental tentang susunan kekuasaan, pembagian wewenang, jaminan HAM, serta hubungan antara negara dan warga negara. 
+      Konstitusi berbeda dengan UUD karena mencakup aturan tertulis maupun tidak tertulis yang mencerminkan cita-cita bangsa dan prinsip dasar negara. 
+      Konstitusi berfungsi sebagai norma tertinggi dalam sistem hukum (rule of law), menjadi rujukan bagi semua peraturan di bawahnya, serta menjadi instrumen untuk menjaga demokrasi melalui pembatasan kekuasaan, jaminan hak minoritas, dan mekanisme check and balance. 
+      Selain itu, konstitusi mengatur struktur lembaga negara, tata politik, proses pemilu, hingga mekanisme perubahan (amandemen) yang harus dilakukan dengan prosedur ketat agar tidak disalahgunakan penguasa. 
+      Materi juga menjelaskan sejarah perkembangan konstitusi Indonesia yang mengalami beberapa fase: UUD 1945 awal, Konstitusi RIS, UUDS 1950, kembalinya UUD 1945 di era Demokrasi Terpimpin, hingga UUD 1945 hasil amandemen yang berlaku sekarang.
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Setelah mempelajari materi ini, saya memahami
+      bahwa konstitusi bukan hanya dokumen hukum,
+      tetapi pedoman hidup bernegara yang menjaga
+      agar kekuasaan tidak disalahgunakan dan hak
+      warga negara tetap terlindungi. Hal ini membuat
+      saya lebih menyadari pentingnya menghargai
+      serta memahami UUD 1945 sebagai dasar negara.
+    </p>
+  `],
+  6: ["Fungsi dan Peran Negara",
+  `
+    <p>
+      fungsi negara dan prinsip-prinsip kebijakan publik yang diperlukan untuk mewujudkan
+      pemerintahan yang adil, efektif, dan berorientasi pada kesejahteraan masyarakat.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Materi ini menjelaskan bahwa negara memiliki fungsi reguler dan fungsi pembangunan yang menyangkut berbagai aspek kehidupan publik. 
+      Fungsi reguler mencakup fungsi politik untuk menjaga keamanan dan pertahanan, fungsi diplomatik untuk membangun hubungan antarnegara dan menjaga perdamaian, fungsi yuridis untuk menjamin keadilan dan menegakkan prinsip negara hukum, serta fungsi administrasi untuk memastikan tata kelola pemerintahan berjalan tertib. 
+      Selain itu, negara juga memiliki fungsi pembangunan yang bertujuan meningkatkan kesejahteraan umum dan mencerdaskan kehidupan masyarakat. 
+      Materi ini kemudian membahas kebijakan publik sebagai instrumen negara yang memiliki dimensi moral (filsafat kebijakan), dimensi politik (otoritas dan legitimasi), serta dimensi administratif. 
+      Dalam konteks etika pemerintahan, prinsip-prinsip good governance seperti transparansi, partisipasi, responsivitas, supremasi hukum, keadilan, efisiensi, dan efektivitas menjadi landasan penting agar negara mampu berperan secara adil dan bertanggung jawab dalam mengelola sumber daya publik serta memenuhi kebutuhan masyarakat.
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Setelah mempelajari materi ini, saya semakin
+      memahami bahwa peran negara sangat luas dan
+      penting untuk menjamin keamanan, keadilan, serta
+      kesejahteraan warganya. Hal ini membuat saya
+      lebih menghargai pentingnya pemerintahan yang
+      transparan, responsif, dan adil agar kebijakan
+      publik benar-benar bermanfaat bagi masyarakat.
+    </p>
+  `],
+  9: ["Demokrasi",
+  `
+    <p>
+      konsep demokrasi dari sisi filosofis, sistem politik, dan penerapannya di Indonesia,
+      sekaligus alasan mengapa negara kita berlandaskan demokrasi Pancasila.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Demokrasi berasal dari kata Yunani demos (rakyat) dan kratos (pemerintahan), sehingga berarti “pemerintahan rakyat.” Abraham Lincoln mendefinisikannya sebagai pemerintahan dari, oleh, dan untuk rakyat. 
+      Plato dan Aristoteles memandang demokrasi sebagai salah satu bentuk pemerintahan ideal, berdampingan dengan monarki dan aristokrasi, namun semuanya berpotensi merosot menjadi bentuk buruk seperti tirani, oligarki, dan mobokrasi.
+      Dalam praktik modern terdapat beberapa <strong>sistem demokrasi makro:</strong> sistem parlementer, sistem trias politica, dan sistem referendum. 
+      Indonesia sendiri menganut demokrasi Pancasila (Sila ke-4), yang mengedepankan musyawarah mufakat, asas perwakilan, serta pembagian kekuasaan antara legislatif, eksekutif, dan yudikatif. Demokrasi sebagai sistem politik juga menekankan prinsip pembagian kekuasaan, pemerintahan konstitusional, hukum, pemilu bebas, kebebasan pers, perlindungan HAM, dan mekanisme check and balance.
+      Indonesia disebut negara demokrasi karena alasan etis (cita-cita kemerdekaan, keadilan, kesejahteraan), sosiologis (keberagaman dan pengalaman kolonial), serta yuridis (amanat UUD 1945 pasal 1–22 mengenai kedaulatan rakyat dan negara hukum).
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Materi ini membuat saya memahami bahwa
+      demokrasi bukan hanya mekanisme memilih
+      pemimpin, tetapi tanggung jawab bersama untuk
+      menjaga musyawarah, keadilan, dan keterlibatan
+      warga. Saya jadi lebih sadar bahwa kualitas
+      demokrasi sangat bergantung pada kesadaran
+      dan partisipasi setiap individu, termasuk diri saya
+      sendiri.
+    </p>
+  `],
+  11: ["Multikulturalisme",
+`
+    <p>
+      pentingnya multikulturalisme sebagai dasar hidup berdampingan secara harmonis
+      dalam masyarakat Indonesia yang beragam.
+    </p>
+
+    <strong class="subjudul">Rangkuman Materi</strong>
+    <p>
+      Multikulturalisme adalah sebuah konsep yang menekankan penerimaan, pengakuan, dan penghargaan terhadap keberagaman budaya dalam suatu masyarakat. 
+      Dalam konteks Indonesia—negara dengan ratusan suku bangsa, bahasa daerah, adat istiadat, dan agama—multikulturalisme tidak hanya menjadi karakter bangsa, tetapi juga kebutuhan mendasar untuk menjaga stabilitas sosial dan persatuan.
+      Multikulturalisme hadir sebagai respons terhadap kenyataan sosial bahwa masyarakat modern semakin heterogen. Kehadirannya mendorong setiap warga untuk memahami bahwa identitas budaya yang berbeda bukanlah ancaman, tetapi kekayaan yang memperkaya kehidupan bersama. 
+      Konsep ini menitikberatkan pada nilai toleransi, saling menghormati, dialog, dan kesetaraan di antara kelompok-kelompok yang hidup berdampingan.
+      Dalam pendidikan kewarganegaraan, multikulturalisme memiliki peran penting untuk membentuk warga negara yang inklusif. 
+      Hal ini dilakukan dengan menanamkan sikap menghargai perbedaan, menolak diskriminasi, serta mengembangkan kemampuan berinteraksi secara positif lintas budaya. Melalui pemahaman multikulturalisme, masyarakat diharapkan mampu mengurangi potensi konflik sosial yang sering muncul akibat prasangka, stereotip, dan mispersepsi antarbudaya.
+    </p>
+
+    <strong class="subjudul">Refleksi</strong>
+    <p>
+      Materi ini membuat saya menyadari bahwa
+      keberagaman bukan sekadar fakta tentang
+      Indonesia, tetapi tanggung jawab untuk bersikap
+      lebih toleran, terbuka, dan tidak mudah
+      menghakimi perbedaan. Saya merasa penting
+      untuk terus belajar memahami budaya lain agar
+      hidup bersama menjadi lebih damai.
+    </p>
+  `]
+};
+
+function openModal(n){
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("badge").innerText = "PERTEMUAN " + n;
+  document.getElementById("modalTitle").innerText = materi[n][0];
+  document.getElementById("modalContent").innerHTML = materi[n][1];
+}
+function closeModal(){
+  document.getElementById("modal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
